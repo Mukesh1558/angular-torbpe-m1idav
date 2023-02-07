@@ -1,0 +1,40 @@
+<div class="form-group">
+  <label for="program">ProjectName</label>
+  <select
+    class="form-control"
+    id="filter"
+    [(ngModel)]="filterValue"
+    name="filter">
+    <option *ngFor="let op1 of option1" [value]="op1">{{ op1 }}</option>
+  </select>
+</div>
+<div class="form-group">
+  <label for="program">Status</label>
+  <select
+    class="form-control"
+    id="filter"
+    [(ngModel)]="filterValue"
+    name="filter">
+    <option *ngFor="let op2 of option2" [value]="op2">{{ op2 }}</option>
+  </select>
+</div>
+<div class="form-group">
+  <label for="program">LastScannedOn</label>
+  <select
+    class="form-control"
+    id="filter"
+    [(ngModel)]="filterValue"
+    name="filter">
+    <option *ngFor="let op3 of option3" [value]="op3">{{ op3 }}</option>
+  </select>
+</div>
+<div class="form-group">
+  <label for="program">Duration</label>
+  <select
+    class="form-control"
+    id="filter"
+    [(ngModel)]="filterValue"
+    name="filter">
+    <option *ngFor="let op4 of option4" [value]="op4">{{ op4}}</option>
+  </select>
+</div>

@@ -1,0 +1,20 @@
+[
+  {
+    "projectName": "Project",
+    "status": "Done",
+    "lastScannedOn": "Now",
+    "duration": "mins"
+  },
+  {
+    "projectName": "Project",
+    "status": "Done",
+    "lastScannedOn": "Now",
+    "duration": "mins"
+  },
+  {
+    "projectName": "Project",
+    "status": "In Progress",
+    "lastScannedOn": "Now",
+    "duration": "mins"
+  }
+]

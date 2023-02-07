@@ -56,4 +56,9 @@ export class ScanFormComponent {
   showFormControls(form: any) {
     return form && form.controls.name && form.controls.name.value;
   }
+
+  constructor(){}
+  ngOnInit(): void{
+  }
+
 }

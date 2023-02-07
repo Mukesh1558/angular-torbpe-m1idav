@@ -1,0 +1,37 @@
+<div class="form-group row"></div>
+<div class="form-group row">
+  <label
+    for="search"
+    class="col-sm-2 col-form-label"
+    style="text-align: right;"
+  >
+    Search
+  </label>
+  <div class="col-sm-6">
+    <input
+      type="text"
+      [(ngModel)]="searchValue"
+      class="form-control"
+      id="search"
+    />
+  </div>
+  <button routerLink="scan">Go to next page</button>
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Project Name</th>
+        <th scope="col">Status</th>
+        <th scope="col">Last Scanned On</th>
+        <th scope="col">Duration</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let s of service | searchfilter: searchValue | multifilter: filterValue">
+        <td scope="col">{{ s.projectName }}</td>
+        <td scope="col">{{ s.status }}</td>
+        <td scope="col">{{ s.lastScannedOn }}</td>
+        <td scope="col">{{ s.duration }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
