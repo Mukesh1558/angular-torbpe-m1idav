@@ -1,0 +1,276 @@
+<div class="container">
+  <div [hidden]="submitted">
+    <form (ngSubmit)="onSubmit()" #scanForm="ngForm">
+      <div class="form-group">
+        <label for="division">OE</label>
+        <select
+          class="form-control"
+          id="divison"
+          required
+          [(ngModel)]="model.division"
+          name="division"
+          #name="ngModel"
+        >
+          <input type="text" class="form-control" id="division" />
+          <option *ngFor="let div of divisions" [value]="div">{{ div }}</option>
+          <!-- ** update ** -->
+        </select>
+      </div>
+      <!-- *************************************************************************** -->
+
+      <div class="form-group">
+        <label for="program">Program</label>
+        <select
+          class="form-control"
+          id="program"
+          required
+          [(ngModel)]="model.program"
+          name="program"
+          #program="ngModel"
+        >
+          <input type="text" class="form-control" id="program" />
+          <option *ngFor="let pro of programs" [value]="pro">{{ pro }}</option>
+          <!-- ** update ** -->
+        </select>
+      </div>
+
+      <!-- ******************************************************************** -->
+
+      <div class="form-group">
+        <label for="projectName">Project Name</label>
+        <select
+          class="form-control"
+          id="projectName"
+          required
+          [(ngModel)]="model.projectName"
+          name="projectName"
+          #projectName="ngModel"
+        >
+          <option *ngFor="let name of projectNames" [value]="name">
+            {{ name }}
+          </option>
+        </select>
+        <div
+          [hidden]="projectName.valid || projectName.pristine"
+          class="alert alert-danger"
+        ></div>
+      </div>
+
+      <!-- ******************************************************************** -->
+
+      <div class="form-group">
+        <label for="decision">Pre - Segreggated Source</label>
+        <div *ngFor="let dec of decisions">
+          <label for="{{ dec }}">
+            <input
+              id="{{ dec }}"
+              [value]="dec"
+              type="radio"
+              name="decision"
+              [(ngModel)]="model.decision"
+            />
+            {{ dec }}
+          </label>
+        </div>
+      </div>
+      <!-- ******************************************************************** -->
+      <div class="form-group">
+        <label for="sourceType">Source Type</label>
+        <select
+          class="form-control"
+          id="sourceType"
+          [(ngModel)]="model.sourceType"
+          name="sourceType"
+          #sourceType="ngModel"
+        >
+          <option *ngFor="let type of sourceTypes" [value]="type">
+            {{ type }}
+          </option>
+        </select>
+      </div>
+
+      <!--  ******************************************************************** -->
+
+      <div class="form-group">
+        <label for="openPath">Open Source Archive Path</label>
+        <input
+          type="text"
+          class="form-control"
+          id="openPath"
+          [(ngModel)]="model.openPath"
+          name="openPath"
+          #openPath="ngModel"
+        />
+      </div>
+
+      <!--  ******************************************************************** -->
+
+      <div class="form-group">
+        <label for="closePath">Closed Source Archive Path</label>
+        <input
+          type="text"
+          class="form-control"
+          id="closePath"
+          [(ngModel)]="model.closePath"
+          name="closePath"
+          #openPath="ngModel"
+        />
+      </div>
+
+      <!-- ******************************************************************** -->
+
+      <div class="form-group">
+        <label for="dependencyAnalysis">Dependency Analysis Required?</label>
+        <div *ngFor="let da of dependencyAnalysiss">
+          <label for="{{ da }}">
+            <input
+              id="{{ da }}"
+              [value]="da"
+              type="radio"
+              name="dependencyAnalysis"
+              [(ngModel)]="model.dependencyAnalysis"
+            />
+            {{ da }}
+          </label>
+        </div>
+      </div>
+
+      <!-- ******************************************************************** -->
+
+      <div class="form-group">
+        <label for="compAoss">Trigger CompAOSS Workflow?</label>
+        <div *ngFor="let ca of compAosss">
+          <label for="{{ ca }}">
+            <input
+              id="{{ ca }}"
+              [value]="ca"
+              type="radio"
+              name="compAoss"
+              [(ngModel)]="model.compAoss"
+            />
+            {{ ca }}
+          </label>
+        </div>
+      </div>
+
+      <!-- ******************************************************************** -->
+
+      <div class="form-group">
+        <label for="prossec">Trigger PrOSSec Workflow?</label>
+        <div *ngFor="let p of prossecs">
+          <label for="{{ p }}">
+            <input
+              id="{{ p }}"
+              [value]="p"
+              type="radio"
+              name="prossec"
+              [(ngModel)]="model.prossec"
+            />
+            {{ p }}
+          </label>
+        </div>
+      </div>
+
+      <!--  ******************************************************************** -->
+
+      <div class="form-group">
+        <label for="fossidProject">FOSSID Project Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="fossidProject"
+          [(ngModel)]="model.fossidProject"
+          name="fossidProject"
+          #openPath="ngModel"
+        />
+      </div>
+
+      <!--  ******************************************************************** -->
+
+      <div class="form-group">
+        <label for="fossidScan">FOSSID Scan Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="fossidScan"
+          [(ngModel)]="model.fossidScan"
+          name="fossidScan"
+          #openPath="ngModel"
+        />
+      </div>
+
+      <!-- ******************************************************************** -->
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="!scanForm.form.valid"
+      >
+        Create Scan
+      </button>
+
+      <div>
+        &nbsp;&nbsp;
+        <button type="button" class="btn btn-default" (click)="newScan()">
+          Cancel
+        </button>
+      </div>
+    </form>
+    .
+  </div>
+
+  <div [hidden]="!submitted">
+    <h2>Scan Details:</h2>
+    <div class="row">
+      <div class="col-xs-3">OE</div>
+      <div class="col-xs-9">{{ model.division }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">Program</div>
+      <div class="col-xs-9">{{ model.program }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">Project Name</div>
+      <div class="col-xs-9">{{ model.projectName }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">Pre - Segregated Source</div>
+      <div class="col-xs-9">{{ model.decision }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">Source Type</div>
+      <div class="col-xs-9">{{ model.sourceType }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">Open Source Archive Path</div>
+      <div class="col-xs-9">{{ model.openPath }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">Closed Source Archive Path</div>
+      <div class="col-xs-9">{{ model.closePath }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">Dependency Analysis Required?</div>
+      <div class="col-xs-9">{{ model.dependencyAnalysis }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">Trigger CompAOSS Workflow?</div>
+      <div class="col-xs-9">{{ model.compAoss }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">Trigger PrOSSec Workflow?</div>
+      <div class="col-xs-9">{{ model.prossec }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">FOSSID Scan Name</div>
+      <div class="col-xs-9">{{ model.fossidProject }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">FOSSID Project Name</div>
+      <div class="col-xs-9">{{ model.fossidScan }}</div>
+    </div>
+    <br />
+    <button type="button" class="btn btn-primary" (click)="submitted = false">
+      Back
+    </button>
+  </div>
+</div>
